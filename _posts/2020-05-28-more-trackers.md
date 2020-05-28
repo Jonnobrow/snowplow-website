@@ -34,3 +34,8 @@ window.snowplow("trackStructEvent", "Authors", "Viewed", "{{ author.name }}", ''
 
 This generates another event every time an author page is visited.
 This would be useful for see which authors were most popular on the site.
+
+# Conclusions
+
+My research into custom events has led me to believe that I have explored as much as would be realistic for a simple blog.
+Without creating a schema and defining custom contexts I think what I have done is all that is possible.
