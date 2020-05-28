@@ -1,0 +1,47 @@
+<!-- Get the page author from site settings -->
+{% assign author = site.data.authors[page.author] %}
+
+<!-- Snowplow starts plowing -->
+<script type="text/javascript">
+ ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+     p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+     };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+     n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","{{site.baseurl}}/assets/sp.js","snowplow"));
+
+ // Initialise the tracker
+ window.snowplow("newTracker", "jonnobrow-tracker", "localhost:9090", {
+     appId: "jonnoplow",
+     platform: "web",
+     context: {
+         webPage: true
+     }
+ });
+
+ // Enable Page View Tracking
+ window.snowplow(
+     'trackPageView',
+
+     // no custom title
+     null,
+
+     // The usual array of static contexts
+     [{
+         schema: "iglu:org.schema/WebPage/jsonschema/1-0-0",
+         data: {
+             {% if author %}
+             author: "{{author.name}} <{{author.email}}>",
+             {% endif %}
+             {% if page.genre %}
+             genre: "{{page.genre}}",
+             {% endif %}
+             {% if page.date %}
+             dateCreated: "{{page.date | date: "%Y-%m-%dT%TZ"}}",
+             dateModified: "{{page.date | date: "%Y-%m-%dT%TZ"}}",
+             datePublished: "{{page.date | date: "%Y-%m-%dT%TZ"}}",
+             {% endif %}
+             inLanguage: "{{site.language}}"
+         }
+     }]
+ );
+</script>
+<!-- Snowplow stops plowing -->
