@@ -1,5 +1,5 @@
 <!-- Get the page author from site settings -->
-{% assign author = site.data.authors[page.author] %}
+{% assign author = site.authors | where: 'nickname', page.author | first %}
 
 <!-- Snowplow starts plowing -->
 <script type="text/javascript">

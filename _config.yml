@@ -26,6 +26,9 @@ url: "https://snowplow.jonnobrow.co.uk" # the base hostname & protocol for your 
 github_username: jonnobrow
 gitlab_username: jonnobrow
 language: English
+collections:
+  authors:
+    output: true
 
 # Build settings
 theme: minima
@@ -48,4 +51,5 @@ theme: minima
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
-- micro-config/
+exclude:
+  - micro-config/

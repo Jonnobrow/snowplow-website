@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<h1>{{ page.name }}</h1>
+<h3>{{ page.short_description }}</h3>
+
+<ul>
+    {% if page.gitlab %}
+    <li>
+        {% include icon-gitlab.html username=page.gitlab %}
+    </li>
+    {% endif %}
+
+    {% if page.github %}
+    <li>
+        {% include icon-github.html username=page.github %}
+    </li>
+    {% endif %}
+
+    <li>
+        <a href ="mailto:{{page.email}}">{{page.email}}</a>
+    </li>
+</ul>
+
+<hr/>
+
+<h2>Posts</h2>
+<ul>
+    {% assign filtered_posts = site.posts | where: 'author', page.nickname %}
+    {% for post in filtered_posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
