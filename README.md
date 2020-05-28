@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://snowplow.jonnobrow.co.uk">
-    <img src="https://gitlab.com/Jonnobrow/snowplow-website/-/blob/master/_includes/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://gitlab.com/Jonnobrow/snowplow-website/-/raw/master/_includes/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Jonnoplow</h3>
