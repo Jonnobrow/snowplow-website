@@ -43,5 +43,20 @@
          }
      }]
  );
+
+
+ // Custom author view tracking
+ {% if page.collection == "authors" %}
+ {% assign author = site.authors | where: 'nickname', page.nickname | first %}
+ window.snowplow("trackStructEvent", "Authors", "Viewed", "{{ author.name }}", '', '0.0');
+ {% endif %}
+
+
+
+
+
+
+
+
 </script>
 <!-- Snowplow stops plowing -->

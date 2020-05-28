@@ -20,4 +20,17 @@ It looks like this:
 
 Now that the page is in place I want to trigger a special event when we visit that page.
 
+Since it is a structured event I defined it as follows:
 
+```javascript
+// Custom author view tracking
+{%raw%}
+{% if page.collection == "authors" %}
+{% assign author = site.authors | where: 'nickname', page.nickname | first %}
+window.snowplow("trackStructEvent", "Authors", "Viewed", "{{ author.name }}", '', '0.0');
+{% endif %}
+{%endraw%}
+```
+
+This generates another event every time an author page is visited.
+This would be useful for see which authors were most popular on the site.
